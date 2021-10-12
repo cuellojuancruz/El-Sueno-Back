@@ -9,7 +9,6 @@ const createProduct = async (req, res, next) => {
         description: req.body.description,
         expirationdate: req.body.expirationdate,
       });
-  
       await newProduct.save();
       res.status(201).json(newProduct);
     } catch (error) {
