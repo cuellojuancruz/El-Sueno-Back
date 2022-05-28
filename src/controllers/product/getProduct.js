@@ -1,22 +1,31 @@
 const { Product } = require("../../db");
 
 
-const getProduct = async (req, res, next) => {
+const getProducts = async (req, res, next) => {
 	try {
-		var {id} = req.params;
+		
         
-		var product = await Product.findOne({
-			where: {
-				id,
-			},
-		});
-		res.json(product);
+		let product = await Product.findAll();
+		return res.json(product);
 	} catch (err) {
+		console.log(product + "entro al error")
 		next(err);
 	}
 };
 
+const getNewProducts = async (req, res, next) => {
+	let id = req.params.id
+	
+	try{
+		let newProducts = await Product.findAll({ id: id })
+		return res.json(newProducts)
+	} catch (err) {
+		console.log(product + "entro al error")
+		next(err);
+	}
+}
+
 
 module.exports = {
-    getProduct,
+    getProducts,
 }

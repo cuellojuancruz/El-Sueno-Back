@@ -3,6 +3,8 @@ const routes = require('./router/index');
 
 
 
+require('./db.js');
+
 const server = express();
 
 
