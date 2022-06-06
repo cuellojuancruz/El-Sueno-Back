@@ -1,6 +1,5 @@
 const { Op } = require('sequelize');
 const { Product } = require("../../db");
-const product = require("../../router/product/product");
 
 
 const getProducts = async (req, res, next) => {
@@ -22,7 +21,8 @@ const getProducts = async (req, res, next) => {
 	else{
 		console.log("entro al else del get")
 		try{
-			product = await Product.findAll({
+			console.log(Object.keys(Product.tableAttributes))
+			let product = await Product.findAll({
 				where:{
 					name: {
 						[Op.iLike]: `%${name}%`
