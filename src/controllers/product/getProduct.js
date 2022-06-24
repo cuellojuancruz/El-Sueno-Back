@@ -4,7 +4,6 @@ const product = require("../../router/product/product");
 
 
 const getProducts = async (req, res, next) => {
-	console.log("Entro al back del get")
 	let {name} = req.query
 
 
@@ -20,7 +19,7 @@ const getProducts = async (req, res, next) => {
 		}
 	}
 	else{
-		console.log("entro al else del get")
+
 		try{
 			product = await Product.findAll({
 				where:{
@@ -29,7 +28,6 @@ const getProducts = async (req, res, next) => {
 					}
 				}
 			})
-			console.log(product)
 			return res.json(product)
 		}catch (err) {
 			console.log(product + "entro al error")
