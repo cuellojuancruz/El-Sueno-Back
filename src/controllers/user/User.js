@@ -3,32 +3,32 @@ const { User } = require("../../db");
 
 
 const findOrCreateUser = async (req, res, next) => {
-	let {id} = req.params
-	let {user} = req.body
+	// let {id} = req.params
+	// let {user} = req.body
 
 	
-		try {
+	// 	try {
 			
 			
-			let userInDB = await User.findOne(id);
+	// 		let userInDB = await User.findOne(id);
 
-			if(userInDB){
-				res.status(304).json("El usuario ya esta registrado")
-			}
-			if(user.type === "cliente"){
-				const newUser = await User.create(user)
-				res.status(201).json(newUser)
-			}
-			else{
-				// preguntar xD
-			}
+	// 		if(userInDB){
+	// 			res.status(304).json("El usuario ya esta registrado")
+	// 		}
+	// 		if(user.type === "cliente"){
+	// 			const newUser = await User.create(user)
+	// 			res.status(201).json(newUser)
+	// 		}
+	// 		else{
+	// 			// preguntar xD
+	// 		}
 
 
 
-		} catch (err) {
-			console.log(err + "entro al error")
-			next(err);
-		}
+	// 	} catch (err) {
+	// 		console.log(err + "entro al error")
+	// 		next(err);
+	// 	}
 
 	// else{
 

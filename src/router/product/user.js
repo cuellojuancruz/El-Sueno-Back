@@ -1,18 +1,18 @@
 const { Router } = require('express');
 
 const { findOrCreateUser } = require("../../controllers/user/User")
-
+// const { getusers } = require("../../controllers/user/User")
 
 const user = Router();
 
-user.post("/findOrCreate", findOrCreateUser)
 // user.delete("/deleteuser/:id", deleteuser)
 // user.put("/updateProdut/:id", updateuser)
-user.get("/getuser", getusers)
-user.get("/getuser/:id", getNewusers)
+// user.get("/getuser/:id", getNewusers)
+// user.get("/getuser", getusers)
+user.post("/findOrCreate", findOrCreateUser)
 
 
-product.get("/error", (req, res) => {
+user.get("/error", (req, res) => {
     res.status(404);
     res.send("No se encontro dicha ruta")
 })

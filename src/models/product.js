@@ -15,6 +15,10 @@ const { DataTypes } = require('sequelize');
       details: {
         type: DataTypes.TEXT
       },
+      price: {
+        type: DataTypes.NUMBER,
+        allowNull: false,
+      }
     });
   };
 
