@@ -1,22 +1,57 @@
+const { Op } = require('sequelize');
 const { Product } = require("../../db");
 
 
-const getProduct = async (req, res, next) => {
-	try {
-		var {id} = req.params;
-        
-		var product = await Product.findOne({
-			where: {
-				id,
-			},
-		});
-		res.json(product);
-	} catch (err) {
-		next(err);
+const getProducts = async (req, res, next) => {
+	let {name} = req.query
+
+
+	if(!name){
+		try {
+			
+			
+			let product = await Product.findAll();
+			return res.json(product);
+		} catch (err) {
+			console.log(err + "entro al error")
+			next(err);
+		}
+	}
+	else{
+
+		try{
+			console.log(Object.keys(Product.tableAttributes))
+			let product = await Product.findAll({
+				where:{
+					name: {
+						[Op.iLike]: `%${name}%`
+					}
+				}
+			})
+			return res.json(product)
+		}catch (err) {
+			console.log(product + "entro al error")
+			next(err);
+		}
 	}
 };
 
+const getNewProducts = async (req, res, next) => {
+	console.log("entro al back del newproducts")
+	let id = req.params.id
+	
+	try{
+		let newProducts = await Product.findAll({ limit: id })
+		return res.json(newProducts)
+	} catch (err) {
+		console.log(err + "entro al error")
+		next(err);
+	}
+}
+
+
 
 module.exports = {
-    getProduct,
+    getProducts,
+	getNewProducts,
 }
